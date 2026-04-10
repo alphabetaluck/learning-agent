@@ -1,0 +1,23 @@
+{
+  "name": "agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsx index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.1",
+  "dependencies": {
+    "@github/copilot-sdk": "0.1.32",
+    "@tavily/core": "0.7.2",
+    "openai": "6.34.0"
+  },
+  "devDependencies": {
+    "tsx": "4.21.0"
+  }
+}
