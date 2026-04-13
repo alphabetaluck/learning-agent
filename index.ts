@@ -153,7 +153,6 @@ async function runAgent(userPrompt: string) {
       const toolName = toolCall.function.name;
       const toolArgs: Record<string, unknown> = JSON.parse(toolCall.function.arguments);
       console.log(`调用工具: ${toolName}，参数: ${JSON.stringify(toolArgs)}`);
-
       const toolResult = await executeTool(toolName, toolArgs);
       console.log(`工具结果: ${toolResult}\n`);
 
