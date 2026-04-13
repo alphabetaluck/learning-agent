@@ -46,10 +46,13 @@ export async function chatCompletion(
     ...messages,
   ];
 
+  // 向模型发送请求
   const response = await client.chat.completions.create({
     model: options.model ?? DEFAULT_MODEL,
     messages: allMessages,
+    // 用于控制生成文本的随机程度，值越高（如 0.8）模型会更倾向于生成多样化和创造性的文本，而值较低（如 0.2）则会使输出更集中和确定性。默认值通常是 1.0。
     temperature: options.temperature ?? 0.7,
+    // 用于限制生成文本的最大长度，单位是 token。一个 token 可以是一个单词或一个子词，具体取决于模型的分词方式。设置 maxTokens 可以防止生成过长的文本，默认值通常是 2048 或更高。
     max_tokens: options.maxTokens,
   });
 

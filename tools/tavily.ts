@@ -23,10 +23,8 @@ export interface TavilySearchResult {
     score: number;
   }>;
 }
-const  TAVILY_API_KEY = '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'
-
 function getClient() {
-  const apiKey = TAVILY_API_KEY;
+  const apiKey = process.env.TAVILY_API_KEY;
   if (!apiKey) {
     throw new Error("TAVILY_API_KEY is not set");
   }
@@ -57,4 +55,12 @@ export async function tavilySearch(
       score: r.score,
     })),
   };
+}
+
+
+
+/** 根据城市和天气搜索推荐的旅游景点 */
+export async function getAttraction(city: string, weather: string): Promise<TavilySearchResult> {
+  const query = `根据城市 ${city} 和天气 ${weather} 推荐的旅游景点`;
+  return tavilySearch(query, { maxResults: 5 });
 }
